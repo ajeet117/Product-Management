@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments::header-title"></head>
+<body class="bg-blue color-gold">
+<header>
+<div th:replace="fragments::header"></div>
+</header>
+<div id="page-wrapper">
+    <div th:replace="fragments::sidenav"></div>
+    <div class="content pb-5">
+        <h2 class="content-header pt-2 mx-3" th:if="${product.id == null}"><u>Add Product</u></h2>
+        <h2 class="content-header pt-2 mx-2" th:unless="${product.id == null}"><u>Edit Product</u></h2>
+        <div class="brand-form m-3 w-50">
+            <form action="#" th:action="@{/product/save}" method="post" th:object="${product}" enctype="multipart/form-data">
+                <input type="hidden" th:field="*{id}">
+                <div class="form-group">
+                    <label for="productname">Product Name</label>
+                    <input type="text" class="form-control" id="productname" th:field="*{name}"/>
+                </div>
+                <div class="form-group">
+                    <label for="brandlogo">Product Logo</label><br>
+                    <input type="file"  id="productlogo" name="productlogo" accept="image/png,image/jpeg"/>
+                </div>
+                <div class="form-group">
+                    <label for="productdescription">Product Description</label>
+                    <textarea name="" id="productdescription" cols="30" rows="10" class="form-control" th:field="*{details}"></textarea>
+                </div>
+                 <div class="form-group">
+                    <label for="madeIn">MadeIn</label>
+                    <input type="text" class="form-control" id="madeIn" th:field="*{madeIn}"/>
+                </div>
+                 <div class="form-group">
+                    <label for="price">Price</label>
+                    <input type="text" class="form-control" id="price" th:field="*{price}"/>
+                </div>
+                 <div class="form-group">
+                    <label for="stock">Stock</label>
+                    <input type="text" class="form-control" id="stock" th:field="*{stock}"/>
+                </div>
+                 <div class="form-group">
+                 <label for="Brand">Brand</label>
+                <select th:field="*{brand}" class="form-control">
+                <th:block th:each="brand : ${allBrands}">
+					<option th:text="${brand.name}" th:value="${brand.id}" >
+                </th:block>
+                </select>
+                </div>
+                <input type="submit" class="btn btn-primary" value="Save">
+            </form>
+        </div>
+    </div>
+</div>
+<div th:replace="fragments::scripts"></div>
+</body>
+</html>

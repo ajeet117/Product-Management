@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product-Login</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
+</head>
+<body class="bg-gold">
+    <div class="w-25 mx-auto login-form p-3">
+    
+        <h1 class="color-blue mb-5 text-center" >Login</h1>
+       
+       	<a th:href="@{/oauth2/authorization/facebook}"> <div class="facebook color-blue">
+            <i class="fa fa-facebook" aria-hidden="true"></i> Facebook
+        </div>
+    	</a>
+        <div  th:if="${param.error}">
+        <p class="color-blue my-3 text-center">[[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]</p>
+        </div>
+    	<div class="color-blue my-2 text-center" th:if="${param.logout}">You have been logged out.</div>
+        <form th:action="@{/login}" method="post">
+            <div class="form-group">
+                <label for="email" class="color-blue">Email</label>
+                <input type="text" class="form-control" id="email" name="email">
+            </div>
+            <div class="form-group">
+                <label for="password" class="color-blue">Password</label>
+                <input type="password" class="form-control" id="password" name="password">
+            </div>
+            <div class="form-check my-2">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1" name="remember-me">
+                <label class="form-check-label color-blue " for="exampleCheck1" >Remember Me</label>
+            </div>
+            <div class="my-3">
+            <a th:href="@{/forgotpassword}" class="color-blue my-2">Forgot Password?</a>
+           
+            <p class="color-blue"> Don't have an account. <a th:href="@{/user/create}" class="color-blue">Sign up here</a></p>
+            </div>
+            <input type="submit" class="btn btn-primary" value="Log in">
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>  
+</body>
+</html>

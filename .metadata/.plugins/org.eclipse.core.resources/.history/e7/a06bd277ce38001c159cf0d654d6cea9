@@ -1,0 +1,36 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+         facebook:
+          clientId: 202069318586402
+          clientSecret: b060684f9bc0a35bff790407b181519a
+          scope:
+           - email
+           - public_profile
+  datasource:
+    password: ''
+    url: jdbc:mysql://localhost:3306/intern
+    username: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+    show-sql: true
+  mail:
+    host: smtp.gmail.com
+    username: ajitmhzn17@gmail.com
+    password: 9803240627
+    port: 587
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+    
+      
+  

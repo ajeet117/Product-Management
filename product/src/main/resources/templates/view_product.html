@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:replace="fragments::header-title"></head>
+<body class="bg-blue color-gold">
+<header th:replace="fragments::header"></header>
+<div id="page-wrapper">
+    <div th:replace="fragments::sidenav"></div>
+    <div class="content pb-5">
+        <h2 class="content-header pt-2 mx-3"><u>View Product</u></h2>
+        <form class="w-75 pt-2 mx-3" th:action="@{/product/page/1}">
+        Search: <input type="text" name="keyword" class="form-control my-3" id="keyword" th:value="${keyword}">
+        <input type="submit" value="submit" class="btn btn-primary">
+        <input type="button" value="clear" id="btnClear" class="btn btn-danger" />
+        </form>
+        <div class="m-3 w-75">
+            <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Logo</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Made In </th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Stock</th>
+                    <th scope="col">Brand</th>
+                    <th scope="col">Details</th>
+                    <th scope="col" >Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                <th:block th:if="${error != null }"><p class="h3 text-center">[[${error}]]</th:block>
+                
+                  <tr th:each="product : ${allProduct}">
+                    <th scope="row" th:text="${product.id}"></th>
+                    <td>
+                    <img th:src="@{${product.productImagePath}}" width="100px" height="100px"/>	
+                    </td>
+                    <td th:text="${product.name}"></td>
+                    <td th:text="${product.madeIn}"></td>
+                    <td th:text="${product.price}"></td>
+                    <td th:text="${product.stock}"></td>
+                    <td th:text="${product.brand}"></td>
+                    <td th:text="${product.details}"></td>
+                    <td>
+                    <a th:href="@{'/product/edit?id=' + ${product.id}}" >Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a th:href="@{'/product/delete/' + ${product.id}}" sec:authorize="hasAuthority('ADMIN')">Delete</a>
+                    </td>
+                  </tr>
+                 
+                  
+                </tbody>
+              </table>
+              <th:block th:unless="${error != null}">
+              <div class="d-flex justify-content-between">
+					<p>Page no: [[${currentpage}]]/[[${totalpage}]]</p>
+					<div>
+						<span th:if="${currentpage > 1 }" ><a th:href="@{'/product/page/' + ${currentpage-1} +'?keyword=' + ${keyword}}">Previous</a></span>
+						<span th:unless="${currentpage > 1}">Previous</span>
+						<span th:each="i : ${#numbers.sequence(1,totalpage)}"> <a
+							th:href="@{'/product/page/' + ${i} +'?keyword=' + ${keyword}}" th:if="${currentpage != i }">[[${i}]]</a>
+							<a th:unless="${currentpage != i}">[[${i}]]</a>
+						</span>
+						<span th:if="${currentpage < totalpage }"><a th:href="@{'/product/page/' + ${currentpage+1} +'?keyword=' + ${keyword}} ">Next</a></span>
+						<span th:unless="${currentpage < totalpage}">Next</span>
+					</div>
+				</div>
+				 </th:block>
+        </div>
+        
+    </div>
+</div>
+<div th:replace="fragments::scripts"></div>
+</body>
+</html>

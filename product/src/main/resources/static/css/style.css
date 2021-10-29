@@ -1,0 +1,115 @@
+*
+{
+    margin:0px;
+    padding:0px;
+    box-sizing: border-box;
+}
+
+.bg-blue
+{
+    background-color: rgba(240,248,255);
+}
+.color-gold
+{
+    color: rgba(205,133,63);
+}
+.bg-gold
+{
+    background-color: rgba(205,133,63);
+}
+.color-blue
+{
+    color:rgba(240,248,255) ;
+}
+nav
+{
+    width: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    border-bottom: 1px solid rgba(0,191,255);
+}
+ul > li > a
+{
+    color: inherit;
+}
+.nav-item
+{
+    display: inline-block;
+}
+.side-navbar
+{
+    width:152px;
+    position: fixed;
+    top:90px;
+    left:0px;
+    text-align: center;
+}
+#page-wrapper
+{
+    padding-top: 90px;
+    width: 100%;
+}
+.content
+{
+    background-color: white;
+    margin-left: 152px;
+}
+.my-card
+{
+    width: 250px;
+    height: 250px;
+}
+.my-card-body
+{
+    height: 200px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    font-size: 48px;
+}
+.my-card-footer
+{
+   
+    height: 50px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+.drop-brand,.drop-product
+{
+    cursor:pointer;
+}
+.brand-option
+{
+    transition: height 2s;
+}
+
+.profile-menu
+{
+    width: 140px;
+    height: 120px;
+}
+.profile-menu li
+{
+    list-style: none;
+}
+.login-form
+{
+    margin-top: 100px;
+    border:2px solid rgba(0,191,255);
+    border-radius: 25px;
+}
+.my-footer-card a
+{
+	color:inherit;
+}
+.facebook
+{
+    width:150px;
+    height:30px;
+    background-color: blue;
+    padding:3px;
+    text-align: center;
+    margin:auto;
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments::header-title">
+    
+</head>
+<body class="bg-blue color-gold">
+<header>
+<div th:replace="fragments::header" ></div>
+</header>
+<div id="page-wrapper">
+<div th:replace="fragments::sidenav" ></div>
+    <div class="content pb-5">
+        <h2 class="content-header p-2 mx-3"><u>Dashboard</u></h2>
+        <div class="d-flex justify-content-between flex-wrap">
+            <div class="d-flex justify-content-between mx-3">
+                <div class="my-card">
+                    <div class="my-card-body bg-gold color-blue">[[${allBrand}]]</div>
+                    <h4 class="my-card-footer bg-blue ">
+                    <a th:href="@{/brand/view}" class="nav-link color-gold">
+                        Brand
+                    </a>
+                    </h4>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-between mx-3">
+                <div class="my-card">
+                    <div class="my-card-body bg-blue color-gold">[[${allProduct}]]</div>
+                    <h4 class="my-card-footer bg-gold ">
+                        <a th:href="@{/product/view}" class="nav-link color-blue">Product</a>
+                    </h4>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-between mx-3">
+                <div class="my-card">
+                    <div class="my-card-body bg-gold color-blue">[[${allUser}]]</div>
+                    <h4 class="my-card-footer bg-blue">
+                       <a th:href="@{/user/view}" class="nav-link color-gold"> User</a>
+                    </h4>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div th:replace="fragments::scripts" ></div>
+</body>
+</html>

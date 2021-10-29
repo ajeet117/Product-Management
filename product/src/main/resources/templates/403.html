@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments::header-title">
+    
+</head>
+<body class="bg-blue color-gold">
+<header>
+<div th:replace="fragments::header" ></div>
+</header>
+<div id="page-wrapper">
+<div th:replace="fragments::sidenav" ></div>
+    <div class="content pb-5 text-center mt-3">
+        Sorry You dont have the permission.<br>
+        <a th:href="@{/}">Click to go back</a>
+    </div>
+</div>
+
+<div th:replace="fragments::scripts" ></div>
+</body>
+</html>

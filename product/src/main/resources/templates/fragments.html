@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:fragment="header-title">
+<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
+    
+    <title>[[${title}]]</title>
+
+</head>
+<body>
+<div th:fragment="header" th:remove="tag">
+<nav class="p-3 d-flex justify-content-between bg-blue">
+<div class="logo">
+    <h1>Product</h1>
+</div>
+<ul class="nav-menu">
+    <li class="nav-item"><a class="nav-link" href="">Home</a></li>
+    <li class="nav-item position-relative">
+    <span class="nav-link drop-profile" sec:authentication="principal.fullName"></span>
+    <!-- <span class="nav-link drop-profile" sec:authentication="authorities"></span> -->
+        <ul class="profile-menu position-absolute bg-blue d-none" >
+            <li ><a  class="nav-link" th:href="@{/account}">Account</a></li>
+            <li><a class="nav-link" th:href="@{/setting}">Setting</a>
+            <li ><a  class="nav-link" href="javascript: logoutForm.submit();">Logout</a></li>
+        </ul>
+        
+        <form th:action="@{/logout}" name="logoutForm" method="post" th:hidden="true">
+        	<input type="submit" value="submit">        	
+        </form>
+        </th:hidden>
+    </li>
+</ul>
+</nav>
+</div>
+
+<div th:fragment="sidenav" th:remove="tag">
+    <div class="side-navbar">
+        <ul>
+            <li><a th:href="@{/}" class="nav-link">Dashboard</a></li>
+            <li><span class="nav-link drop-brand">Brand</span>
+            <ul class="brand-option d-none">
+                <li><a th:href="@{/brand/add}" class="nav-link">Add Brand</a></li>
+                <li><a th:href="@{/brand/view}" class="nav-link">View Brand</a></li>
+            </ul></li>
+            <li><span class="nav-link drop-product">Product</span>
+                <ul class="product-option d-none">
+                    <li><a th:href="@{/product/create}" class="nav-link">Add Product</a></li>
+                    <li><a th:href="@{/product/view}" class="nav-link">View Product</a></li>
+                </ul>
+            </li>
+            <li><a th:href="@{/user/view}" class="nav-link">User</a></li>
+        </ul>
+    </div>
+ <div th:fragment="scripts" th:remove="tag">
+ 	<script th:src="@{/js/script.js}"></script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>  
+ 
+ </div>
+</div>
+</body>
+</html>
